@@ -24,3 +24,11 @@ A simple Dynamic DNS system. I wrote this to work with my [Mikrotik][1] router t
     :log info ("DYNDNS:  " .$ddnshost . " " . [/file get ($outputfile) contents])
     /file remove ($outputfile)
       
+Requirements
+============
+.NET 4.5
+VS2013 (using Update 4 on my machine)
+IIS (tested on 8.5 on Win2k12R2) 
+Something to read and write to the service (I used a [Mikrotik][1] router for writing (script above) and a custom application (more on that soon) for reading).
+
+[1]: http://www.mikrotik.com
