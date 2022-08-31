@@ -2,7 +2,7 @@ dyndnsservice
 =============
 
 A simple Dynamic DNS system. I wrote this to work with my [Mikrotik][1] router to update DNS records for my WAN links. More details on that later, but here is the basic script used:
-
+```
     :local ddnshost "wan1" # what you want to update on the host, must be unique
     :local key "key"
     :local updatehost "192.168.0.80" # IP of machine running the dyndns service
@@ -23,12 +23,20 @@ A simple Dynamic DNS system. I wrote this to work with my [Mikrotik][1] router t
     dst-path=$outputfile
     :log info ("DYNDNS:  " .$ddnshost . " " . [/file get ($outputfile) contents])
     /file remove ($outputfile)
+```
       
+
+To read the data, make a call to
+
+`http://<ip address>/nic/get?host=<hostname>`
+
+this will return the latest IP. You can use this in other processes as required.
+
 Requirements
 ============
-.NET 4.5
-VS2013 (using Update 4 on my machine)
-IIS (tested on 8.5 on Win2k12R2) 
+.NET 4.8
+VS2022 (i could build on 2019)
+IIS (tested on Windows 11) 
 Something to read and write to the service (I used a [Mikrotik][1] router for writing (script above) and a custom application (more on that soon) for reading).
 
 [1]: http://www.mikrotik.com
